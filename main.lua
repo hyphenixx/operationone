@@ -54,7 +54,7 @@ local function drawPlayers()
                 seenModels[obj] = true
                 
                 local footPos = hrp.Position - Vector3.new(0, 2.5, 0)
-                local headPos = hrp.Position + Vector3.new(0, 1, 0)
+                local headPos = hrp.Position + Vector3.new(0, 3, 0)
                 
                 local screenFoot, visFoot = WorldToScreen(footPos)
                 local screenHead, visHead = WorldToScreen(headPos)
