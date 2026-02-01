@@ -4,12 +4,6 @@ local workspace = game:GetService("Workspace")
 local lPlr = Players.LocalPlayer
 local character = lPlr.Character or lPlr.CharacterAdded:Wait() or workspace:FindFirstChild(lPlr.Name)
 
-local PlayerEspEnable_IsChecked = false
-local Checkbox13_IsChecked = false
-
--- Store drawing objects per player
-local PlayerDrawings = {}
-
 -- Bomb ESP drawings
 local BombDot = nil
 local BombText = nil
@@ -60,7 +54,7 @@ local function drawPlayers()
                 seenModels[obj] = true
                 
                 local footPos = hrp.Position - Vector3.new(0, 2.5, 0)
-                local headPos = hrp.Position + Vector3.new(0, 1, 0)  -- Slightly higher for box top
+                local headPos = hrp.Position + Vector3.new(0, 1, 0)
                 
                 local screenFoot, visFoot = WorldToScreen(footPos)
                 local screenHead, visHead = WorldToScreen(headPos)
@@ -139,7 +133,6 @@ local function drawBomb()
         if bombRoot then
             local pos, vis = WorldToScreen(bombRoot.Position)
             
-            -- Create dot if doesn't exist
             if not BombDot then
                 BombDot = Drawing.new("Circle")
                 BombDot.Color = Color3.fromRGB(255, 255, 0)
@@ -150,7 +143,6 @@ local function drawBomb()
                 BombDot.Visible = false
             end
             
-            -- Create text if doesn't exist
             if not BombText then
                 BombText = Drawing.new("Text")
                 BombText.Color = Color3.fromRGB(255, 255, 0)
