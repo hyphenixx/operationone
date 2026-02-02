@@ -25,14 +25,18 @@ local function drawPlayers()
     
     local validNames = {}
     for _, player in ipairs(playerList) do
-        if player ~= lPlr then
-            if player.Name then
-                validNames[player.Name] = true
-            end
-            if player.DisplayName then
-                validNames[player.DisplayName] = true
-            end
-        end
+        if player.Name ~= lPlr.Name and player ~= lPlr and player.Team then
+	        local myTeam = lPlr.Team
+	        local teamName = player.Team.Name
+	        if player.Team and teamName ~= myTeam.Name then
+	            if player.Name then
+	                validNames[player.Name] = true
+	            end
+	            if player.DisplayName then
+	                validNames[player.DisplayName] = true
+	            end
+	        end
+		end
     end
     
     -- Clean up drawings for models that no longer exist
